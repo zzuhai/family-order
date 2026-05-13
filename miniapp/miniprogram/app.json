@@ -1,0 +1,30 @@
+{
+  "pages": [
+    "pages/order/order",
+    "pages/history/history",
+    "pages/orderDetail/orderDetail",
+    "pages/index/index"
+  ],
+  "window": {
+    "navigationBarTitleText": "家庭点餐",
+    "navigationBarBackgroundColor": "#545c64",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#f5f5f5"
+  },
+  "tabBar": {
+    "color": "#999",
+    "selectedColor": "#545c64",
+    "backgroundColor": "#fff",
+    "list": [
+      {
+        "pagePath": "pages/order/order",
+        "text": "选菜"
+      },
+      {
+        "pagePath": "pages/history/history",
+        "text": "我的订单"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

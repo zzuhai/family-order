@@ -1,0 +1,1 @@
+import{s}from"./request-BBJWZ8mp.js";function r(){return s.get("/dishes")}function n(e){return s.post("/dishes",e)}function u(e,t){return s.put(`/dishes/${e}`,t)}function d(e){return s.delete(`/dishes/${e}`)}export{n as c,d,r as g,u};

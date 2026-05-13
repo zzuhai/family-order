@@ -1,0 +1,1 @@
+import{s as r}from"./request-BBJWZ8mp.js";function n(e){return r.get("/menus",{params:{date:e}})}function a(e,t){return r.post("/menus",{date:e,dishIds:t})}function u(e){return r.get("/orders",{params:{date:e}})}export{u as a,n as g,a as p};

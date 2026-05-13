@@ -1,0 +1,46 @@
+<!--index.wxml-->
+<view class="container">
+  <!-- 日期和标题 -->
+  <view class="header">
+    <view class="date">{{date}}</view>
+    <view class="title">今日菜单</view>
+  </view>
+
+  <!-- 加载状态 -->
+  <view wx:if="{{loading}}" class="loading">
+    <text>加载中...</text>
+  </view>
+
+  <!-- 菜单列表 -->
+  <view wx:elif="{{menus.length > 0}}" class="menu-list">
+    <view wx:for="{{menus}}" wx:key="id" class="menu-item {{item.selected ? 'selected' : ''}}" bindtap="toggleSelect" data-index="{{index}}">
+      <view class="menu-content">
+        <view class="menu-info">
+          <view class="menu-name">{{item.dishName}}</view>
+          <view class="menu-desc">{{item.dishDescription}}</view>
+        </view>
+        <view class="menu-image" wx:if="{{item.dishImageUrl}}" bindtap="goToDetail" data-dish-id="{{item.dishId}}">
+          <image src="{{item.dishImageUrl}}" mode="aspectFill" />
+        </view>
+      </view>
+      <view class="select-icon" wx:if="{{item.selected}}">
+        <text>✓</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 空状态 -->
+  <view wx:else class="empty">
+    <text>今日暂无菜单</text>
+  </view>
+
+  <!-- 提交按钮 -->
+  <view wx:if="{{!hasOrder && menus.length > 0}}" class="submit-area">
+    <button class="submit-btn" bindtap="submitOrder">提交订单</button>
+  </view>
+
+  <!-- 已点餐提示 -->
+  <view wx:if="{{hasOrder}}" class="has-order">
+    <text>今日已点餐</text>
+  </view>
+</view>

@@ -1,0 +1,150 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 40rpx;
+  box-sizing: border-box;
+}
+
+.login-box {
+  width: 100%;
+  max-width: 600rpx;
+  padding: 60rpx 40rpx;
+  background: white;
+  border-radius: 20rpx;
+  box-shadow: 0 20rpx 40rpx rgba(0, 0, 0, 0.1);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.login-box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 8rpx;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+}
+
+.logo {
+  width: 160rpx;
+  height: 160rpx;
+  margin-bottom: 30rpx;
+  border-radius: 50%;
+  border: 6rpx solid #f0f0f0;
+}
+
+.title {
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10rpx;
+}
+
+.subtitle {
+  font-size: 28rpx;
+  color: #666;
+  margin-bottom: 50rpx;
+}
+
+.debug-info {
+  background-color: #e8f4f8;
+  border: 1rpx solid #b3e0f2;
+  border-radius: 10rpx;
+  padding: 20rpx;
+  margin: 20rpx 0;
+  font-size: 24rpx;
+  color: #333;
+  text-align: left;
+}
+
+.timestamp {
+  background-color: #f8f4e8;
+  border: 1rpx solid #f2e0b3;
+  border-radius: 10rpx;
+  padding: 10rpx;
+  margin: 10rpx 0;
+  font-size: 20rpx;
+  color: #666;
+  text-align: left;
+}
+
+.wechat-icon {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 15rpx;
+  vertical-align: middle;
+}
+
+.login-btn {
+  width: 100%;
+  background: linear-gradient(90deg, #07c160, #06ae56);
+  color: white;
+  border: none;
+  border-radius: 50rpx;
+  padding: 30rpx;
+  font-size: 32rpx;
+  margin-bottom: 40rpx;
+  box-shadow: 0 10rpx 20rpx rgba(7, 193, 96, 0.3);
+  transition: transform 0.2s;
+}
+
+.login-btn::after {
+  border: none;
+}
+
+.login-btn:active {
+  transform: scale(0.98);
+}
+
+.agreement {
+  margin-bottom: 50rpx;
+}
+
+.agreement-text {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.agreement-link {
+  font-size: 24rpx;
+  color: #07c160;
+  text-decoration: underline;
+}
+
+.features {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-top: 30rpx;
+}
+
+.feature-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 33%;
+  margin-bottom: 30rpx;
+}
+
+.feature-icon {
+  width: 60rpx;
+  height: 60rpx;
+  margin-bottom: 15rpx;
+}
+
+.feature-text {
+  font-size: 24rpx;
+  color: #666;
+}
+
+.footer {
+  margin-top: 40rpx;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 24rpx;
+}

@@ -1,0 +1,103 @@
+.loading {
+  text-align: center;
+  padding: 100rpx;
+  color: #999;
+}
+
+.order-list {
+  padding: 20rpx;
+}
+
+.order-card {
+  background-color: #fff;
+  border-radius: 10rpx;
+  padding: 20rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.06);
+  transition: all 0.3s;
+}
+
+.order-card:active {
+  transform: scale(0.98);
+  box-shadow: 0 2rpx 4rpx rgba(0, 0, 0, 0.1);
+}
+
+.order-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 15rpx;
+  border-bottom: 1rpx solid #eee;
+}
+
+.order-date {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.order-status {
+  font-size: 24rpx;
+  padding: 4rpx 12rpx;
+  border-radius: 4rpx;
+}
+
+.order-status.submitted {
+  background-color: #fdf6ec;
+  color: #e6a23c;
+}
+
+.order-status.preparing {
+  background-color: #ecf5ff;
+  color: #409eff;
+}
+
+.order-status.completed {
+  background-color: #f0f9eb;
+  color: #67c23a;
+}
+
+.order-items {
+  padding: 15rpx 0;
+}
+
+.order-item {
+  display: flex;
+  align-items: center;
+  padding: 10rpx 0;
+}
+
+.item-image {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 8rpx;
+  margin-right: 15rpx;
+}
+
+.item-info {
+  flex: 1;
+}
+
+.item-name {
+  font-size: 28rpx;
+  color: #333;
+}
+
+.order-footer {
+  padding-top: 10rpx;
+  border-top: 1rpx solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.order-time {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.view-detail {
+  font-size: 26rpx;
+  color: #545c64;
+  font-weight: 500;
+}

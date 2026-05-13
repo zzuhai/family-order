@@ -1,0 +1,34 @@
+<view class="container">
+  <view wx:if="{{loading}}" class="loading">
+    <text>加载中...</text>
+  </view>
+
+  <view wx:elif="{{orders.length === 0}}" class="empty-state">
+    <text>暂无点餐记录</text>
+  </view>
+
+  <view wx:else class="order-list">
+    <view wx:for="{{orders}}" wx:key="id" class="order-card" bindtap="goToDetail" data-order-id="{{item.id}}">
+      <view class="order-header">
+        <text class="order-date">{{item.menuDate}}</text>
+        <view class="order-status {{item.status}}">
+          <text>{{item.status === 'submitted' ? '已提交' : item.status === 'preparing' ? '准备中' : '已完成'}}</text>
+        </view>
+      </view>
+
+      <view class="order-items">
+        <view wx:for="{{item.items}}" wx:for-item="dish" wx:key="id" class="order-item">
+          <image wx:if="{{dish.dishImageUrl}}" class="item-image" src="{{dish.dishImageUrl}}" mode="aspectFill" />
+          <view class="item-info">
+            <text class="item-name">{{dish.dishName}}</text>
+          </view>
+        </view>
+      </view>
+
+      <view class="order-footer">
+        <text class="order-time">{{item.createdAt}}</text>
+        <text class="view-detail">查看详情 ></text>
+      </view>
+    </view>
+  </view>
+</view>
