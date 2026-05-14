@@ -62,4 +62,13 @@ public class DishController {
         }
         return Result.success();
     }
+
+    @DeleteMapping("/batch")
+    public Result<Void> batchDeleteDishes(@RequestBody List<Long> ids) {
+        if (ids == null || ids.isEmpty()) {
+            return Result.error(400, "请选择要删除的菜品");
+        }
+        dishService.batchDeleteDishes(ids);
+        return Result.success();
+    }
 }

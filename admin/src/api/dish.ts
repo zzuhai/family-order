@@ -20,3 +20,7 @@ export function updateDish(id: number, data: Partial<Dish>) {
 export function deleteDish(id: number) {
   return request.delete(`/dishes/${id}`)
 }
+
+export function deleteDishes(ids: number[]) {
+  return request.delete('/dishes/batch', { data: ids })
+}

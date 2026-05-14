@@ -2,10 +2,13 @@
   <div class="dish-page">
     <div class="page-header">
       <el-button type="primary" @click="handleAdd">添加菜品</el-button>
+      <el-button type="danger" :disabled="selectedIds.length === 0" @click="handleBatchDelete">
+        批量删除{{ selectedIds.length ? ` (${selectedIds.length})` : '' }}
+      </el-button>
     </div>
 
-    <el-table :data="dishes" stripe>
-      <el-table-column prop="name" label="菜品名称" width="150" />
+    <el-table :data="dishes" stripe @selection-change="handleSelectionChange">
+      <el-table-column type="selection" width="55" />
       <el-table-column prop="category" label="分类" width="100" />
       <el-table-column prop="description" label="描述" />
       <el-table-column label="图片" width="100">
@@ -237,10 +240,11 @@
 import { ref, onMounted } from 'vue'
 import { ElMessage, ElMessageBox } from 'element-plus'
 import { Plus, Delete, Picture, ShoppingCart, Document } from '@element-plus/icons-vue'
-import { getDishes, createDish, updateDish, deleteDish } from '@/api/dish'
+import { getDishes, createDish, updateDish, deleteDish, deleteDishes } from '@/api/dish'
 import type { Dish } from '@/api/types'
 
 const dishes = ref<Dish[]>([])
+const selectedIds = ref<number[]>([])
 const dialogVisible = ref(false)
 const detailVisible = ref(false)
 const isEdit = ref(false)
@@ -399,6 +403,28 @@ const handleDelete = async (id: number) => {
   })
   await deleteDish(id)
   ElMessage.success('删除成功')
+  loadDishes()
+}
+
+const handleSelectionChange = (selection: Dish[]) => {
+  selectedIds.value = selection.map(s => s.id)
+}
+
+const handleBatchDelete = async () => {
+  if (selectedIds.value.length === 0) return
+
+  await ElMessageBox.confirm(
+    `确定批量删除选中的 ${selectedIds.value.length} 个菜品吗？`,
+    '提示',
+    {
+      confirmButtonText: '确定',
+      cancelButtonText: '取消',
+      type: 'warning'
+    }
+  )
+  await deleteDishes(selectedIds.value)
+  ElMessage.success(`成功删除 ${selectedIds.value.length} 个菜品`)
+  selectedIds.value = []
   loadDishes()
 }
 

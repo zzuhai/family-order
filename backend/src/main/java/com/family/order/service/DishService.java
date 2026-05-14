@@ -175,6 +175,18 @@ public class DishService {
         return true;
     }
 
+    @Transactional
+    public void batchDeleteDishes(List<Long> ids) {
+        for (Long id : ids) {
+            Dish dish = dishMapper.selectById(id);
+            if (dish != null) {
+                dish.setDeleted(1);
+                dish.setUpdatedAt(LocalDateTime.now());
+                dishMapper.updateById(dish);
+            }
+        }
+    }
+
     private DishDTO convertToDTO(Dish dish) {
         DishDTO dto = new DishDTO();
         dto.setId(dish.getId());
