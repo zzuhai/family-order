@@ -1,33 +1,46 @@
-<view class="container">
-  <view wx:if="{{loading}}" class="loading">
-    <text>加载中...</text>
+<view class="page">
+  <view class="page-header">
+    <text class="header-title">我的订单</text>
   </view>
 
+  <view wx:if="{{loading}}" class="loading">加载中...</view>
+
   <view wx:elif="{{orders.length === 0}}" class="empty-state">
+    <text class="empty-emoji">📭</text>
     <text>暂无点餐记录</text>
   </view>
 
   <view wx:else class="order-list">
-    <view wx:for="{{orders}}" wx:key="id" class="order-card" bindtap="goToDetail" data-order-id="{{item.id}}">
-      <view class="order-header">
-        <text class="order-date">{{item.menuDate}}</text>
-        <view class="order-status {{item.status}}">
-          <text>{{item.status === 'submitted' ? '已提交' : item.status === 'preparing' ? '准备中' : '已完成'}}</text>
+    <view
+      wx:for="{{orders}}"
+      wx:key="id"
+      class="order-card"
+      bindtap="goToDetail"
+      data-order-id="{{item.id}}"
+    >
+      <view class="order-card-header">
+        <view class="order-date-wrap">
+          <text class="order-date">{{item.menuDate}}</text>
+          <text class="order-day">{{getDayText(item.menuDate)}}</text>
+        </view>
+        <view class="order-status tag tag-{{item.status}}">
+          <text>{{getStatusText(item.status)}}</text>
         </view>
       </view>
 
-      <view class="order-items">
-        <view wx:for="{{item.items}}" wx:for-item="dish" wx:key="id" class="order-item">
-          <image wx:if="{{dish.dishImageUrl}}" class="item-image" src="{{dish.dishImageUrl}}" mode="aspectFill" />
-          <view class="item-info">
-            <text class="item-name">{{dish.dishName}}</text>
+      <view class="order-dishes">
+        <view wx:for="{{item.items}}" wx:for-item="dish" wx:key="id" class="order-dish-item">
+          <image wx:if="{{dish.dishImageUrl}}" class="dish-icon" src="{{dish.dishImageUrl}}" mode="aspectFill" />
+          <view wx:else class="dish-icon-placeholder">
+            <text>{{dish.dishName.charAt(0)}}</text>
           </view>
+          <text class="dish-label">{{dish.dishName}}</text>
         </view>
       </view>
 
-      <view class="order-footer">
+      <view class="order-card-footer">
         <text class="order-time">{{item.createdAt}}</text>
-        <text class="view-detail">查看详情 ></text>
+        <text class="view-link">查看详情 ›</text>
       </view>
     </view>
   </view>

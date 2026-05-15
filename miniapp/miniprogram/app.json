@@ -6,15 +6,16 @@
     "pages/index/index"
   ],
   "window": {
-    "navigationBarTitleText": "家庭点餐",
-    "navigationBarBackgroundColor": "#545c64",
+    "navigationBarTitleText": "家庭食记",
+    "navigationBarBackgroundColor": "#3D2C2E",
     "navigationBarTextStyle": "white",
-    "backgroundColor": "#f5f5f5"
+    "backgroundColor": "#FFF8F0"
   },
   "tabBar": {
-    "color": "#999",
-    "selectedColor": "#545c64",
-    "backgroundColor": "#fff",
+    "color": "#8A7A7B",
+    "selectedColor": "#D4764A",
+    "backgroundColor": "#FFFFFF",
+    "borderStyle": "white",
     "list": [
       {
         "pagePath": "pages/order/order",
@@ -22,7 +23,7 @@
       },
       {
         "pagePath": "pages/history/history",
-        "text": "我的订单"
+        "text": "订单"
       }
     ]
   },

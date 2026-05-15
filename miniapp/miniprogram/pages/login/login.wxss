@@ -1,150 +1,132 @@
-.container {
+.login-page {
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   padding: 40rpx;
   box-sizing: border-box;
-}
-
-.login-box {
-  width: 100%;
-  max-width: 600rpx;
-  padding: 60rpx 40rpx;
-  background: white;
-  border-radius: 20rpx;
-  box-shadow: 0 20rpx 40rpx rgba(0, 0, 0, 0.1);
-  text-align: center;
+  background: linear-gradient(180deg, #3D2C2E 0%, #5A484A 100%);
   position: relative;
   overflow: hidden;
 }
 
-.login-box::before {
-  content: '';
+.login-bg {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 8rpx;
-  background: linear-gradient(90deg, #667eea, #764ba2);
+  inset: 0;
+  pointer-events: none;
 }
 
-.logo {
-  width: 160rpx;
-  height: 160rpx;
-  margin-bottom: 30rpx;
-  border-radius: 50%;
-  border: 6rpx solid #f0f0f0;
+.bg-emoji {
+  position: absolute;
+  font-size: 120rpx;
+  opacity: 0.06;
 }
 
-.title {
-  font-size: 40rpx;
-  font-weight: bold;
-  color: #333;
-  margin-bottom: 10rpx;
-}
+.emoji-1 { top: 10%; left: 10%; transform: rotate(-15deg); }
+.emoji-2 { top: 55%; right: 8%; transform: rotate(20deg); font-size: 160rpx; }
+.emoji-3 { bottom: 15%; left: 15%; transform: rotate(-5deg); }
 
-.subtitle {
-  font-size: 28rpx;
-  color: #666;
-  margin-bottom: 50rpx;
-}
-
-.debug-info {
-  background-color: #e8f4f8;
-  border: 1rpx solid #b3e0f2;
-  border-radius: 10rpx;
-  padding: 20rpx;
-  margin: 20rpx 0;
-  font-size: 24rpx;
-  color: #333;
-  text-align: left;
-}
-
-.timestamp {
-  background-color: #f8f4e8;
-  border: 1rpx solid #f2e0b3;
-  border-radius: 10rpx;
-  padding: 10rpx;
-  margin: 10rpx 0;
-  font-size: 20rpx;
-  color: #666;
-  text-align: left;
-}
-
-.wechat-icon {
-  width: 40rpx;
-  height: 40rpx;
-  margin-right: 15rpx;
-  vertical-align: middle;
-}
-
-.login-btn {
+.login-card {
   width: 100%;
-  background: linear-gradient(90deg, #07c160, #06ae56);
-  color: white;
-  border: none;
-  border-radius: 50rpx;
-  padding: 30rpx;
-  font-size: 32rpx;
-  margin-bottom: 40rpx;
-  box-shadow: 0 10rpx 20rpx rgba(7, 193, 96, 0.3);
-  transition: transform 0.2s;
+  max-width: 560rpx;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(20px);
+  border-radius: 32rpx;
+  padding: 60rpx 40rpx 40rpx;
+  box-shadow: 0 20rpx 60rpx rgba(0, 0, 0, 0.2);
+  position: relative;
+  z-index: 1;
 }
 
-.login-btn::after {
-  border: none;
-}
-
-.login-btn:active {
-  transform: scale(0.98);
-}
-
-.agreement {
+.brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin-bottom: 50rpx;
 }
 
-.agreement-text {
-  font-size: 24rpx;
-  color: #999;
+.brand-icon {
+  font-size: 72rpx;
+  margin-bottom: 16rpx;
 }
 
-.agreement-link {
+.brand-title {
+  font-size: 40rpx;
+  font-weight: 700;
+  color: #3D2C2E;
+  letter-spacing: 6rpx;
+}
+
+.brand-sub {
   font-size: 24rpx;
-  color: #07c160;
-  text-decoration: underline;
+  color: #8A7A7B;
+  letter-spacing: 4rpx;
+  margin-top: 8rpx;
+}
+
+.wechat-btn {
+  width: 100%;
+  height: 90rpx;
+  line-height: 90rpx;
+  background: linear-gradient(135deg, #D4764A, #B85E34);
+  color: #fff;
+  border-radius: 45rpx;
+  font-size: 30rpx;
+  font-weight: 600;
+  letter-spacing: 4rpx;
+  border: none;
+  padding: 0;
+  margin-bottom: 40rpx;
+  box-shadow: 0 8rpx 24rpx rgba(212, 118, 74, 0.3);
+}
+
+.wechat-btn:active {
+  opacity: 0.85;
+}
+
+.wechat-btn[disabled] {
+  opacity: 0.6;
+}
+
+.btn-loading {
+  font-size: 28rpx;
+  opacity: 0.8;
 }
 
 .features {
   display: flex;
   justify-content: space-around;
-  flex-wrap: wrap;
-  margin-top: 30rpx;
+  padding: 0 20rpx;
 }
 
-.feature-item {
+.feature {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 33%;
-  margin-bottom: 30rpx;
+  gap: 10rpx;
 }
 
-.feature-icon {
-  width: 60rpx;
-  height: 60rpx;
-  margin-bottom: 15rpx;
+.feature-emoji {
+  font-size: 44rpx;
 }
 
 .feature-text {
   font-size: 24rpx;
-  color: #666;
+  color: #8A7A7B;
 }
 
 .footer {
-  margin-top: 40rpx;
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 24rpx;
+  position: absolute;
+  bottom: 60rpx;
+  left: 0;
+  right: 0;
+  text-align: center;
+  z-index: 1;
+}
+
+.footer text {
+  font-size: 22rpx;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 1rpx;
 }

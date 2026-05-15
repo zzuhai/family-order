@@ -1,61 +1,61 @@
-<view class="container">
-  <!-- 加载状态 -->
-  <view wx:if="{{loading}}" class="loading">
-    <text>加载中...</text>
-  </view>
+<view class="page">
+  <view wx:if="{{loading}}" class="loading">加载菜品中...</view>
 
-  <!-- 菜单主体 -->
-  <view wx:else class="menu-container">
-    <!-- 左侧分类 -->
-    <scroll-view class="category-sidebar" scroll-y>
-      <view
-        wx:for="{{categories}}"
-        wx:key="index"
-        class="category-item {{selectedCategoryIndex === index ? 'active' : ''}}"
-        bindtap="selectCategory"
-        data-index="{{index}}"
-      >
-        <text>{{item}}</text>
-      </view>
-    </scroll-view>
-
-    <!-- 右侧菜品列表 -->
-    <scroll-view class="dish-content" scroll-y>
-      <view wx:if="{{filteredDishes.length > 0}}" class="dish-list">
+  <view wx:else class="order-page">
+    <!-- 左侧分类 + 右侧菜品 -->
+    <view class="main-content">
+      <!-- 左侧分类导航 -->
+      <scroll-view class="category-sidebar" scroll-y show-scrollbar="{{false}}" enhanced>
         <view
-          wx:for="{{filteredDishes}}"
-          wx:key="id"
-          class="dish-item {{item.selected ? 'selected' : ''}}"
-          bindtap="toggleSelect"
-          data-dish-id="{{item.id}}"
+          wx:for="{{categories}}"
+          wx:key="index"
+          class="category-item {{selectedCategoryIndex === index ? 'active' : ''}}"
+          bindtap="selectCategory"
+          data-index="{{index}}"
         >
-          <image
-            wx:if="{{item.imageUrl}}"
-            class="dish-image"
-            src="{{item.imageUrl}}"
-            mode="aspectFill"
-          />
-          <image
-            wx:else
-            class="dish-image dish-image-placeholder"
-            src="/images/placeholder.png"
-            mode="aspectFill"
-          />
-          <text class="dish-name">{{item.name}}</text>
-          <view wx:if="{{item.selected}}" class="select-badge">✓</view>
+          <text>{{item}}</text>
         </view>
-      </view>
+      </scroll-view>
 
-      <!-- 空状态 -->
-      <view wx:else class="empty-state">
-        <text>暂无菜品</text>
-      </view>
-    </scroll-view>
+      <!-- 右侧菜品列表 -->
+      <scroll-view class="dish-scroll" scroll-y show-scrollbar="{{false}}" enhanced>
+        <view wx:if="{{filteredDishes.length > 0}}" class="dish-list">
+          <view
+            wx:for="{{filteredDishes}}"
+            wx:key="id"
+            class="dish-item {{item.selected ? 'selected' : ''}}"
+            bindtap="toggleSelect"
+            data-dish-id="{{item.id}}"
+          >
+            <view class="dish-image-wrap">
+              <image
+                wx:if="{{item.imageUrl}}"
+                class="dish-image"
+                src="{{item.imageUrl}}"
+                mode="aspectFill"
+              />
+              <view wx:else class="dish-image-placeholder">
+                <text>{{item.name.charAt(0)}}</text>
+              </view>
+            </view>
+            <view class="dish-info">
+              <text class="dish-name">{{item.name}}</text>
+              <text class="dish-desc">{{item.description}}</text>
+            </view>
+            <view wx:if="{{item.selected}}" class="selected-badge">✓</view>
+          </view>
+        </view>
+        <view wx:else class="empty-state">暂无菜品</view>
+      </scroll-view>
+    </view>
   </view>
 
-  <!-- 底部提交按钮 -->
-  <view class="submit-bar">
-    <view class="selected-count">已选 {{selectedCount}} 道菜</view>
-    <button class="submit-btn" bindtap="submitOrder" disabled="{{selectedCount === 0}}">提交订单</button>
+  <!-- 底部栏 -->
+  <view class="bottom-bar">
+    <view class="cart-info">
+      <text class="cart-emoji">🍽️</text>
+      <text class="cart-text">已选 {{selectedCount}} 道菜</text>
+    </view>
+    <button class="submit-btn" disabled="{{selectedCount === 0}}" bindtap="submitOrder">提交订单</button>
   </view>
 </view>

@@ -1,48 +1,39 @@
-<view class="container">
-  <view class="login-box">
-    <image class="logo" src="/images/icons/avatar.png"></image>
-    <view class="title">家庭点餐系统</view>
-    <view class="subtitle">享受便捷的家庭订餐体验</view>
+<view class="login-page">
+  <view class="login-bg">
+    <view class="bg-emoji emoji-1">🍳</view>
+    <view class="bg-emoji emoji-2">🥘</view>
+    <view class="bg-emoji emoji-3">🧑‍🍳</view>
+  </view>
 
-    <!-- 显示调试信息 -->
-    <view class="debug-info">
-      <text>{{debugInfo}}</text>
+  <view class="login-card">
+    <view class="brand">
+      <view class="brand-icon">🍳</view>
+      <text class="brand-title">家庭食记</text>
+      <text class="brand-sub">温暖每一餐</text>
     </view>
 
-    <view class="timestamp">
-      <text>时间: {{timestamp}}</text>
-    </view>
-
-    <button class="login-btn" bindtap="onLogin" disabled="{{loading}}">
-      <image class="wechat-icon" src="/images/icons/usercenter.png"></image>
-      微信一键登录
+    <button class="wechat-btn" bindtap="onLogin" disabled="{{loading}}">
+      <text wx:if="{{loading}}" class="btn-loading">登录中...</text>
+      <text wx:else>微信一键登录</text>
     </button>
 
-    <view class="agreement">
-      <!-- 点击登录即表示您同意我们的服务条款 -->
-      <text class="agreement-text">登录即表示您已阅读并同意</text>
-      <text class="agreement-link" bindtap="onAgreementTap">《用户协议》</text>
-      <text class="agreement-text">和</text>
-      <text class="agreement-link" bindtap="onPrivacyTap">《隐私政策》</text>
-    </view>
-
     <view class="features">
-      <view class="feature-item">
-        <image class="feature-icon" src="/images/icons/home.png"></image>
-        <text class="feature-text">每日精选菜单</text>
+      <view class="feature">
+        <text class="feature-emoji">📋</text>
+        <text class="feature-text">每日菜单</text>
       </view>
-      <view class="feature-item">
-        <image class="feature-icon" src="/images/icons/business.png"></image>
-        <text class="feature-text">轻松点餐下单</text>
+      <view class="feature">
+        <text class="feature-emoji">👍</text>
+        <text class="feature-text">一键点餐</text>
       </view>
-      <view class="feature-item">
-        <image class="feature-icon" src="/images/icons/goods.png"></image>
-        <text class="feature-text">订单历史查询</text>
+      <view class="feature">
+        <text class="feature-emoji">📜</text>
+        <text class="feature-text">历史记录</text>
       </view>
     </view>
   </view>
 
   <view class="footer">
-    <text>© 2026 家庭点餐系统</text>
+    <text>登录即表示同意《用户协议》和《隐私政策》</text>
   </view>
 </view>

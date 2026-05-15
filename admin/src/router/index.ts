@@ -14,6 +14,12 @@ const routes: RouteRecordRaw[] = [
         meta: { title: '菜品管理' }
       },
       {
+        path: 'menu',
+        name: 'Menu',
+        component: () => import('@/views/menu/index.vue'),
+        meta: { title: '每日菜单' }
+      },
+      {
         path: 'order',
         name: 'Order',
         component: () => import('@/views/order/index.vue'),

@@ -1,0 +1,25 @@
+# Claude
+.claude/
+
+# Dependencies
+admin/node_modules/
+miniapp/node_modules/
+
+# Build outputs
+backend/target/
+admin/dist/
+
+# IDE
+.idea/
+*.iml
+
+# Vite cache
+admin/node_modules/.vite/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.local

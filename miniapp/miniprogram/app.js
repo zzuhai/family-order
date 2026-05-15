@@ -3,7 +3,7 @@ App({
   globalData: {
     env: 'your-env-id',
     userInfo: null,
-    baseUrl: 'https://www.zzuhai.xyz/api'
+    baseUrl: 'http://localhost:8080/api'
   },
 
   onLaunch() {

@@ -26,9 +26,19 @@ public class DishService {
     private final DishIngredientMapper ingredientMapper;
     private final DishStepMapper stepMapper;
 
-    public List<DishDTO> getAllDishes() {
+    public List<DishDTO> getAllDishes(String name, String category, Integer status) {
         LambdaQueryWrapper<Dish> wrapper = new LambdaQueryWrapper<>();
-        wrapper.eq(Dish::getDeleted, 0).orderByDesc(Dish::getCreatedAt);
+        wrapper.eq(Dish::getDeleted, 0);
+        if (name != null && !name.isBlank()) {
+            wrapper.like(Dish::getName, name);
+        }
+        if (category != null && !category.isBlank()) {
+            wrapper.eq(Dish::getCategory, category);
+        }
+        if (status != null) {
+            wrapper.eq(Dish::getStatus, status);
+        }
+        wrapper.orderByDesc(Dish::getCreatedAt);
         List<Dish> dishes = dishMapper.selectList(wrapper);
 
         return dishes.stream().map(this::convertToDTO).collect(Collectors.toList());
@@ -164,27 +174,12 @@ public class DishService {
 
     @Transactional
     public boolean deleteDish(Long id) {
-        Dish dish = dishMapper.selectById(id);
-        if (dish == null) {
-            return false;
-        }
-
-        dish.setDeleted(1);
-        dish.setUpdatedAt(LocalDateTime.now());
-        dishMapper.updateById(dish);
-        return true;
+        return dishMapper.deleteById(id) > 0;
     }
 
     @Transactional
     public void batchDeleteDishes(List<Long> ids) {
-        for (Long id : ids) {
-            Dish dish = dishMapper.selectById(id);
-            if (dish != null) {
-                dish.setDeleted(1);
-                dish.setUpdatedAt(LocalDateTime.now());
-                dishMapper.updateById(dish);
-            }
-        }
+        dishMapper.deleteBatchIds(ids);
     }
 
     private DishDTO convertToDTO(Dish dish) {

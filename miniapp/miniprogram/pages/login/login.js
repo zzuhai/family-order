@@ -31,9 +31,9 @@ Page({
 
               // 延迟跳转以让用户看到成功提示
               setTimeout(() => {
-                // 登录成功后跳转到首页
+                // 登录成功后跳转到选菜页
                 wx.switchTab({
-                  url: '/pages/index/index'
+                  url: '/pages/order/order'
                 })
               }, 1500)
             })
@@ -98,9 +98,9 @@ Page({
   onLoad() {
     const token = wx.getStorageSync('token')
     if (token) {
-      // 如果已经登录，直接跳转到首页
+      // 如果已经登录，直接跳转到选菜页
       wx.switchTab({
-        url: '/pages/index/index'
+        url: '/pages/order/order'
       })
     }
   }

@@ -16,8 +16,11 @@ public class DishController {
     private final DishService dishService;
 
     @GetMapping
-    public Result<List<DishDTO>> getAllDishes() {
-        List<DishDTO> dishes = dishService.getAllDishes();
+    public Result<List<DishDTO>> getAllDishes(
+            @RequestParam(required = false) String name,
+            @RequestParam(required = false) String category,
+            @RequestParam(required = false) Integer status) {
+        List<DishDTO> dishes = dishService.getAllDishes(name, category, status);
         return Result.success(dishes);
     }
 

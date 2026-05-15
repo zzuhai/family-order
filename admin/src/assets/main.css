@@ -1,33 +1,209 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+/* ========================================
+   家庭食记 · 设计系统
+   Warm Kitchen Theme
+   ======================================== */
+
+:root {
+  /* ---- 色彩 ---- */
+  --color-clay:       #D4764A;
+  --color-clay-dark:  #B85E34;
+  --color-clay-light: #E8A87C;
+  --color-sage:       #7A8B5E;
+  --color-sage-light: #A8B88E;
+  --color-cream:      #FFF8F0;
+  --color-cream-dark: #F5EDE4;
+  --color-brown:      #3D2C2E;
+  --color-brown-light:#5A484A;
+  --color-muted:      #8A7A7B;
+  --color-peach:      #F5D4B8;
+  --color-red:        #D46060;
+  --color-gold:       #E8B84A;
+
+  /* ---- Element Plus 主题覆盖 ---- */
+  --el-color-primary:         var(--color-clay);
+  --el-color-primary-light-3: #E8A87C;
+  --el-color-primary-light-5: #F0C8A8;
+  --el-color-primary-light-7: #F8E0D0;
+  --el-color-primary-light-8: #FCF0E8;
+  --el-color-primary-light-9: #FEF8F4;
+  --el-color-primary-dark-2:  var(--color-clay-dark);
+  --el-color-success:         var(--color-sage);
+  --el-color-warning:         var(--color-gold);
+  --el-color-danger:          var(--color-red);
+  --el-color-info:            var(--color-muted);
+
+  --el-bg-color:              var(--color-cream);
+  --el-bg-color-overlay:      #FFFFFF;
+  --el-text-color-primary:    var(--color-brown);
+  --el-text-color-regular:    var(--color-brown-light);
+  --el-text-color-secondary:  var(--color-muted);
+  --el-border-color:          #F0E8E0;
+  --el-border-color-light:    #F5F0EC;
+  --el-border-color-lighter:  #FAF5F0;
+  --el-fill-color:            #FFFDF8;
+  --el-fill-color-light:      #FFFDF8;
+  --el-fill-color-lighter:    #FFFEFC;
+  --el-mask-color:            rgba(61, 44, 46, 0.4);
+  --el-border-radius-base:    12px;
+  --el-border-radius-small:   8px;
+  --el-border-radius-round:   20px;
+
+  /* ---- 自定义 ---- */
+  --font-family-title:  'Noto Serif SC', 'STSong', 'SimSun', serif;
+  --font-family-body:   'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --shadow-card:        0 2px 12px rgba(61, 44, 46, 0.06);
+  --shadow-card-hover:  0 4px 20px rgba(61, 44, 46, 0.1);
+  --transition:         all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+/* ---- 全局 ---- */
+* { box-sizing: border-box; }
 
 html, body, #app {
   height: 100%;
-  font-family: 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;
+  margin: 0;
+  font-family: var(--font-family-body);
+  background: var(--el-bg-color);
+  color: var(--el-text-color-primary);
+  -webkit-font-smoothing: antialiased;
 }
 
-.login-container {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+/* ---- Element Plus 全局覆盖 ---- */
+.el-table {
+  --el-table-border-color: var(--el-border-color-light);
+  --el-table-header-bg-color: #FFFDF8;
+  --el-table-row-hover-bg-color: #FFF8F0;
 }
 
-.login-box {
-  width: 400px;
-  padding: 40px;
-  background: white;
-  border-radius: 10px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+.el-table th.el-table__cell {
+  font-weight: 600;
+  color: var(--color-brown);
+  font-family: var(--font-family-title);
+  letter-spacing: 0.5px;
+  background-color: #FFFDF8 !important;
 }
 
-.login-title {
-  text-align: center;
-  font-size: 24px;
-  margin-bottom: 30px;
-  color: #333;
+.el-table th.el-table__cell > .cell {
+  font-weight: 600;
 }
+
+.el-card {
+  border: none;
+  border-radius: var(--el-border-radius-base);
+  box-shadow: var(--shadow-card);
+  transition: var(--transition);
+}
+
+.el-card:hover {
+  box-shadow: var(--shadow-card-hover);
+}
+
+.el-dialog {
+  border-radius: 16px;
+  --el-dialog-bg-color: #FFFFFF;
+}
+
+.el-dialog__header {
+  padding: 24px 24px 0;
+  font-family: var(--font-family-title);
+  font-weight: 600;
+  font-size: 18px;
+  color: var(--color-brown);
+}
+
+.el-dialog__body { padding: 20px 24px; }
+.el-dialog__footer { padding: 0 24px 24px; }
+
+.el-button {
+  --el-border-radius-base: 8px;
+  font-family: var(--font-family-body);
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  transition: var(--transition);
+}
+
+.el-button--primary {
+  --el-button-bg-color: var(--color-clay);
+  --el-button-border-color: var(--color-clay);
+  --el-button-hover-bg-color: var(--color-clay-dark);
+  --el-button-hover-border-color: var(--color-clay-dark);
+  --el-button-active-bg-color: var(--color-clay-dark);
+}
+
+.el-button--danger {
+  --el-button-bg-color: var(--color-red);
+  --el-button-border-color: var(--color-red);
+}
+
+.el-tag {
+  --el-tag-border-radius: 6px;
+  font-weight: 500;
+}
+
+.el-input__wrapper {
+  box-shadow: 0 0 0 1px var(--el-border-color) inset;
+  border-radius: 8px;
+  transition: var(--transition);
+}
+
+.el-input__wrapper:hover {
+  box-shadow: 0 0 0 1px var(--color-clay-light) inset;
+}
+
+.el-input__wrapper.is-focus {
+  box-shadow: 0 0 0 1px var(--color-clay) inset !important;
+}
+
+.el-menu {
+  border-right: none !important;
+}
+
+.el-menu-item {
+  font-family: var(--font-family-body);
+  letter-spacing: 0.5px;
+  transition: var(--transition);
+}
+
+.el-empty__description p {
+  color: var(--color-muted);
+}
+
+.el-date-editor .el-input__wrapper {
+  border-radius: 8px;
+}
+
+.el-checkbox__input.is-checked .el-checkbox__inner {
+  background-color: var(--color-clay);
+  border-color: var(--color-clay);
+}
+
+.el-checkbox__input.is-checked + .el-checkbox__label {
+  color: var(--color-clay);
+}
+
+.el-radio__input.is-checked .el-radio__inner {
+  border-color: var(--color-clay);
+  background: var(--color-clay);
+}
+
+.el-radio__input.is-checked + .el-radio__label {
+  color: var(--color-clay);
+}
+
+.el-divider__text {
+  font-family: var(--font-family-title);
+  color: var(--color-brown);
+}
+
+.el-table__body tr.current-row > td.el-table__cell {
+  background-color: #FFF8F0;
+}
+
+/* 滚动条美化 */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: var(--color-peach);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--color-clay-light); }

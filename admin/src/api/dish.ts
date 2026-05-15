@@ -1,8 +1,14 @@
 import request from './request'
 import type { Dish } from './types'
 
-export function getDishes() {
-  return request.get<Dish[]>('/dishes')
+export interface DishQuery {
+  name?: string
+  category?: string
+  status?: number
+}
+
+export function getDishes(params?: DishQuery) {
+  return request.get<Dish[]>('/dishes', { params })
 }
 
 export function getDish(id: number) {

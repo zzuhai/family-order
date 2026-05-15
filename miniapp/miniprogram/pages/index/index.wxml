@@ -1,46 +1,49 @@
-<!--index.wxml-->
-<view class="container">
-  <!-- 日期和标题 -->
-  <view class="header">
-    <view class="date">{{date}}</view>
-    <view class="title">今日菜单</view>
+<view class="page">
+  <!-- 日期头部 -->
+  <view class="page-header">
+    <text class="header-label">今日菜单</text>
+    <text class="header-date">{{date}}</text>
   </view>
 
-  <!-- 加载状态 -->
-  <view wx:if="{{loading}}" class="loading">
-    <text>加载中...</text>
-  </view>
+  <view wx:if="{{loading}}" class="loading">加载中...</view>
 
-  <!-- 菜单列表 -->
   <view wx:elif="{{menus.length > 0}}" class="menu-list">
-    <view wx:for="{{menus}}" wx:key="id" class="menu-item {{item.selected ? 'selected' : ''}}" bindtap="toggleSelect" data-index="{{index}}">
-      <view class="menu-content">
+    <view
+      wx:for="{{menus}}"
+      wx:key="id"
+      class="menu-card {{item.selected ? 'selected' : ''}}"
+      bindtap="toggleSelect"
+      data-index="{{index}}"
+    >
+      <view class="menu-card-left">
+        <image
+          wx:if="{{item.dishImageUrl}}"
+          class="menu-thumb"
+          src="{{item.dishImageUrl}}"
+          mode="aspectFill"
+        />
+        <view wx:else class="menu-thumb-placeholder">
+          <text>{{item.dishName.charAt(0)}}</text>
+        </view>
         <view class="menu-info">
-          <view class="menu-name">{{item.dishName}}</view>
-          <view class="menu-desc">{{item.dishDescription}}</view>
-        </view>
-        <view class="menu-image" wx:if="{{item.dishImageUrl}}" bindtap="goToDetail" data-dish-id="{{item.dishId}}">
-          <image src="{{item.dishImageUrl}}" mode="aspectFill" />
+          <text class="menu-name">{{item.dishName}}</text>
+          <text class="menu-desc">{{item.dishDescription}}</text>
         </view>
       </view>
-      <view class="select-icon" wx:if="{{item.selected}}">
-        <text>✓</text>
-      </view>
+      <view wx:if="{{item.selected}}" class="menu-check">✓</view>
     </view>
   </view>
 
-  <!-- 空状态 -->
-  <view wx:else class="empty">
+  <view wx:else class="empty-state">
+    <text class="empty-emoji">📭</text>
     <text>今日暂无菜单</text>
   </view>
 
-  <!-- 提交按钮 -->
-  <view wx:if="{{!hasOrder && menus.length > 0}}" class="submit-area">
-    <button class="submit-btn" bindtap="submitOrder">提交订单</button>
+  <view wx:if="{{!hasOrder && menus.length > 0}}" class="submit-wrap">
+    <button class="btn-primary" bindtap="submitOrder">提交订单</button>
   </view>
 
-  <!-- 已点餐提示 -->
-  <view wx:if="{{hasOrder}}" class="has-order">
-    <text>今日已点餐</text>
+  <view wx:elif="{{hasOrder}}" class="ordered-banner">
+    <text>✅ 今日已点餐</text>
   </view>
 </view>
